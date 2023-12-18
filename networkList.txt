@@ -1,0 +1,5 @@
+NETWORK ID     NAME            DRIVER    SCOPE
+c7b3309f4d9e   bridge          bridge    local
+284b84fa498a   host            host      local
+709dcd8e5ce1   invet-network   bridge    local
+0bf3c43f8267   none            null      local

@@ -1,11 +1,13 @@
 const express = require('express')
+const pool = require('./src/database/connection')
 
 const app = express()
-const port = 8080 //must be replaced by env variable
 app.get("/", (req,res)=>{
-    res.send("Hello world")
+    
+    res.send(`okay ${req.ip}`)
 })
 
-app.listen(8080,()=>{
-    console.log(`server running on port ${port}`)
+app.listen(3000,()=>{
+    console.log(`server running on port 3000`)
 })
+

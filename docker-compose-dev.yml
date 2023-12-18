@@ -1,0 +1,36 @@
+version: '1.0.0'
+services:
+  invent-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABSE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_DATABASE: ${DATABASE_DATABASE}
+      DATABASE_PORT: ${DATABASE_PORT}
+      CHOKIDAR_USEPOLLING: true
+    links:
+      - invent-db
+    volumes:
+      - .:/home/app
+  invent-db:
+    image: postgres:bullseye
+    restart: always
+    ports:
+      - 6000:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: invention
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    
+  invent-adminer:
+    image: adminer:standalone
+    restart: always
+    ports:
+      - 5000:8080
+
+volumes:
+  postgres-data:
